@@ -12,15 +12,132 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Wiki article styles */
+.wiki-content h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.375rem;
+  border-bottom: 1px solid #e5e7eb;
+  color: #111827;
+}
+
+.wiki-content h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #1f2937;
+}
+
+.wiki-content p {
+  margin-bottom: 1rem;
+  line-height: 1.75;
+  color: #374151;
+}
+
+.wiki-content ul, .wiki-content ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.wiki-content ul {
+  list-style-type: disc;
+}
+
+.wiki-content ol {
+  list-style-type: decimal;
+}
+
+.wiki-content li {
+  margin-bottom: 0.375rem;
+  line-height: 1.75;
+  color: #374151;
+}
+
+.wiki-content a {
+  color: #2563eb;
+  text-decoration: underline;
+  text-decoration-color: #93c5fd;
+  text-underline-offset: 2px;
+  transition: all 0.15s;
+}
+
+.wiki-content a:hover {
+  color: #1d4ed8;
+  text-decoration-color: #2563eb;
+}
+
+.wiki-content pre {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+.wiki-content code {
+  background: #f3f4f6;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  color: #dc2626;
+  font-family: ui-monospace, monospace;
+}
+
+.wiki-content pre code {
+  background: none;
+  padding: 0;
+  color: #374151;
+}
+
+.wiki-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+.wiki-content th {
+  text-align: left;
+  padding: 0.625rem 0.75rem;
+  background: #f9fafb;
+  border-bottom: 2px solid #e5e7eb;
+  font-weight: 600;
+  color: #374151;
+}
+
+.wiki-content td {
+  padding: 0.625rem 0.75rem;
+  border-bottom: 1px solid #f3f4f6;
+  color: #4b5563;
+}
+
+.wiki-content tr:hover td {
+  background: #f9fafb;
+}
+
+.wiki-content strong {
+  color: #111827;
+}
+
+.wiki-content em {
+  color: #4b5563;
+}
+
+.wiki-content blockquote {
+  border-left: 4px solid #3b82f6;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  color: #6b7280;
+  font-style: italic;
 }
