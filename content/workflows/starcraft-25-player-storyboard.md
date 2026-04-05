@@ -30,9 +30,9 @@ A complete production storyboard for introducing 25 StarCraft players in a cinem
 ## Structure
 
 ```
-[0:00 – 0:20]  COLD OPEN — Establishing the world
-[0:20 – 0:35]  TITLE CARD — Tournament name reveal
-[0:35 – 7:00]  PLAYER INTRODUCTIONS — 25 players × ~8-10s each
+[0:00 – 0:25]  COLD OPEN — Establishing the world (aerial → ground-level)
+[0:25 – 0:40]  TITLE CARD — Tournament name reveal
+[0:40 – 7:05]  PLAYER INTRODUCTIONS — 25 players × ~8-10s each
   ├── Terran players (1–9)
   ├── Zerg players (10–17)
   └── Protoss players (18–25)
@@ -111,25 +111,47 @@ extreme wide shot, cinematic 21:9, 60fps
 
 > **Seedance notes:** One motion verb (descent/push). Camera and subject movement separated. Secondary motion: dust particles, asteroid rotation, distant flashes.
 
-### Shot 2 — Battlefield Reveal (0:10 – 0:20)
+### Shot 2a — Battlefield Reveal: Aerial Wide (0:10 – 0:20)
 
-**Clip 2 (10s)**
+**Clip 2a (10s)**
 
 ```
 Camera breaks through clouds to reveal a vast alien battlefield below,
-three distinct armies clashing — blue explosions on the left,
-purple organic forms in the center, golden energy beams on the right,
-smoke columns rising, the ground trembling with impact,
-crane shot descending from high altitude to ground level,
+three factions clashing —
+Terran siege tanks and marines firing blue-white ordnance on the left flank
+with goliaths striding behind them launching missiles skyward,
+a Zerg swarm of zerglings and hydralisks surging across purple creep in the center
+with ultralisks smashing through the front line and mutalisks swarming overhead,
+Protoss zealots charging with psionic blades and archons radiating golden energy on the right
+with carriers hovering above releasing swarms of interceptors,
+smoke columns rising where the front lines collide,
+camera holds wide with slow drift forward,
 golden hour light cutting through storm clouds,
-extreme wide shot transitioning to wide shot, cinematic 21:9, 60fps
+extreme wide shot, cinematic 21:9, 60fps
 ```
 
-> **Seedance notes:** Multi-shot capability — this can auto-cut from the wide aerial to ground level. Physics-aware: smoke, trembling ground, light through clouds.
+> **Seedance notes:** Camera holds at altitude — one motion (slow drift forward). The wide framing lets all 9 unit types read as faction shapes and colors without competing for focus. Secondary motion: smoke columns, missile trails, interceptor swarms, mutalisk flocking.
+
+### Shot 2b — Battlefield Reveal: Ground Level (0:20 – 0:25)
+
+**Clip 2b (5s)**
+
+```
+Ground-level camera pushes forward through the battlefield chaos,
+explosions erupting on either side sending dirt and debris over the lens,
+a zergling pack stampedes past in the foreground,
+an ultralisk charges through smoke in the midground shaking the earth,
+Terran tracer rounds and Protoss energy beams streaking overhead,
+camera at knee height with aggressive dolly forward and handheld shake,
+harsh firelight and muzzle flash against dark smoke-filled atmosphere,
+wide shot, cinematic 21:9, 60fps
+```
+
+> **Seedance notes:** One motion verb (pushes forward). Foreground/midground/background layering gives depth. Physics-heavy: dirt over lens, earth-shake from ultralisk, tracer rounds overhead. The contrast from the calm aerial wide to this chaotic ground-level shot creates visceral escalation.
 
 ---
 
-## TITLE CARD (0:20 – 0:35)
+## TITLE CARD (0:25 – 0:40)
 
 **Generated in post-production** — Seedance garbles text. Use After Effects or DaVinci Resolve.
 
@@ -932,8 +954,8 @@ cinematic 21:9, 60fps slow motion
 |---|---|
 | Player portrait clips (Clip A) | 25 × 3 variants = 75 |
 | Player action clips (Clip B) | 25 × 3 variants = 75 |
-| Structural shots (open, close) | 4 × 3 variants = 12 |
-| **Total generations** | **~162** |
+| Structural shots (open, close) | 5 × 3 variants = 15 |
+| **Total generations** | **~165** |
 | Estimated generation time | ~80 minutes (at ~30s per 10s clip) |
 
 See [Seedance 2.0](/wiki/seedance-2) for platform details, [Multi-Shot Workflows](/wiki/multi-shot-workflows) for the assembly pipeline, and [Character Consistency](/wiki/character-consistency-fundamentals) for the @ reference approach.
