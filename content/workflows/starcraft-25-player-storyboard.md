@@ -13,6 +13,11 @@ related:
 
 A complete production storyboard for introducing 25 StarCraft players in a cinematic video using [Seedance 2.0](/wiki/seedance-2). Designed to leverage Seedance's physics-aware action, multi-shot generation, native audio, and @ reference system.
 
+> **How to read this storyboard:**
+>
+> - **Code blocks** (` ``` `) = the actual prompt you paste into Seedance 2.0
+> - **Principles applied** (blockquotes) = production notes explaining which wiki principles make each prompt effective. These are for learning and iteration — don't paste them into Seedance.
+
 ---
 
 ## Video Overview
@@ -109,7 +114,14 @@ volumetric fog from distant battles catching starlight,
 extreme wide shot, cinematic 21:9, 60fps
 ```
 
-> **Seedance notes:** One motion verb (descent/push). Camera and subject movement separated. Secondary motion: dust particles, asteroid rotation, distant flashes.
+> **Principles applied:**
+>
+> - **[One motion verb per shot](/wiki/seedance-2#critical-rules)** — "descent/push" is the only action; asteroids and particles are secondary motion, not competing verbs
+> - **[Separate camera from subject movement](/wiki/seedance-2#critical-rules)** — camera pushes forward, asteroids drift independently
+> - **[Secondary motion](/wiki/seedance-2#strengths)** — dust particles, asteroid rotation, distant flashes. Seedance excels at these physics details
+> - **[Extreme wide shot](/wiki/scene-description-language)** — ELS establishes scale and isolation before the chaos to come
+> - **[Lighting is king](/wiki/lighting-techniques)** — "deep blue-black space with orange explosion flashes" creates mood through contrast, not through complex setups
+> - **[Temporal phrasing](/wiki/prompt-engineering-fundamentals)** — "slow" sets the pacing tone for the entire cold open
 
 ### Shot 2a — Battlefield Reveal: Aerial Wide (0:10 – 0:20)
 
@@ -130,7 +142,15 @@ golden hour light cutting through storm clouds,
 extreme wide shot, cinematic 21:9, 60fps
 ```
 
-> **Seedance notes:** Camera holds at altitude — one motion (slow drift forward). The wide framing lets all 9 unit types read as faction shapes and colors without competing for focus. Secondary motion: smoke columns, missile trails, interceptor swarms, mutalisk flocking.
+> **Principles applied:**
+>
+> - **[One motion verb per shot](/wiki/seedance-2#critical-rules)** — camera "holds wide with slow drift forward" is the only motion; unit actions are scene dressing, not directed verbs
+> - **[Specificity over vagueness](/wiki/prompt-engineering-fundamentals)** — naming exact units (siege tanks, goliaths, zerglings, ultralisks, mutalisks, zealots, archons, carriers, interceptors) gives Seedance concrete visual targets vs. abstract "blue/purple/gold"
+> - **[Color grading through faction palettes](/wiki/color-grading-prompts)** — blue-white ordnance, purple creep, golden energy beams create natural color separation without explicit grading instructions
+> - **[Composition layering](/wiki/composition-rules)** — left/center/right spatial division gives the eye a clear map of the battlefield
+> - **[Secondary motion](/wiki/seedance-2#strengths)** — smoke columns, missile trails, interceptor swarms, mutalisk flocking. Multiple physics layers that Seedance renders well
+> - **[Extreme wide shot](/wiki/scene-description-language)** — camera stays at altitude so all 9 unit types read as faction shapes without competing for focus
+> - **[Golden hour lighting](/wiki/natural-lighting)** — "golden hour light cutting through storm clouds" provides both drama and natural color warmth
 
 ### Shot 2b — Battlefield Reveal: Ground Level (0:20 – 0:25)
 
@@ -147,7 +167,15 @@ harsh firelight and muzzle flash against dark smoke-filled atmosphere,
 wide shot, cinematic 21:9, 60fps
 ```
 
-> **Seedance notes:** One motion verb (pushes forward). Foreground/midground/background layering gives depth. Physics-heavy: dirt over lens, earth-shake from ultralisk, tracer rounds overhead. The contrast from the calm aerial wide to this chaotic ground-level shot creates visceral escalation.
+> **Principles applied:**
+>
+> - **[One motion verb per shot](/wiki/seedance-2#critical-rules)** — "pushes forward" is the only directed camera action
+> - **[Foreground/midground/background layering](/wiki/composition-rules)** — zergling pack (foreground), ultralisk in smoke (midground), tracer rounds overhead (background). Three depth planes in one shot
+> - **[Low angle + knee height](/wiki/camera-angles)** — ground-level perspective makes everything towering and threatening, selling the chaos
+> - **[Camera movement: aggressive dolly](/wiki/camera-movements)** — forward dolly with handheld shake creates documentary urgency, contrasting the calm aerial drift of Shot 2a
+> - **[Secondary motion / physics](/wiki/seedance-2#strengths)** — dirt over lens, earth-shake from ultralisk, debris. Describing friction and force ("shaking the earth") rather than just the action
+> - **[Mood lighting](/wiki/mood-lighting)** — "harsh firelight and muzzle flash against dark smoke-filled atmosphere" — no clean light source, everything lit by the battle itself
+> - **[Shot variety for pacing](/wiki/shot-list-planning)** — the jump from calm aerial wide to chaotic ground-level creates visceral escalation through contrast
 
 ---
 
@@ -202,6 +230,15 @@ the beam illuminating everything in blinding white transitioning to orange,
 wide shot, cinematic 21:9, 60fps slow motion
 ```
 
+> **Principles applied:**
+>
+> - **[@ reference system](/wiki/seedance-2#-reference-system)** — `@terran_player_01` locks face and costume across both clips
+> - **[Depth of field](/wiki/depth-of-field)** — "shallow depth of field f/1.4" isolates the character from the environment, drawing focus to the face
+> - **[Split lighting / dual color temperature](/wiki/lighting-techniques)** — "warm tungsten interior mixed with cold blue viewport glow" creates visual tension across the face (Clip A)
+> - **[Camera movement: orbit](/wiki/camera-movements)** — orbiting the ship during the blast reveals the scale of the yamato cannon from multiple angles (Clip B)
+> - **[Secondary motion](/wiki/seedance-2#strengths)** — sparks drifting (Clip A), debris + shockwave rippling (Clip B). Physics details that Seedance renders best
+> - **[One motion verb per shot](/wiki/seedance-2#critical-rules)** — Clip A: "stands" (static subject, camera dollies). Clip B: "fires" (one action, camera orbits separately)
+
 ---
 
 #### Player 2 — The Marine King
@@ -228,6 +265,15 @@ camera dollies laterally along the firing line at chest height,
 harsh staccato lighting from gunfire against dark stormy sky,
 wide shot, cinematic 21:9, 60fps slow motion
 ```
+
+> **Principles applied:**
+>
+> - **[Atmosphere descriptors: gritty](/wiki/scene-description-language)** — "rain-soaked", "handheld shake", "muzzle flash" — gritty vocabulary signals documentary realism
+> - **[Secondary motion](/wiki/seedance-2#strengths)** — rain drops catching light, shell casings cascading, tracer rounds. Multiple particle systems Seedance excels at
+> - **[Camera movement: lateral dolly](/wiki/camera-movements)** — tracking along the firing line at chest height creates the feeling of running alongside the marines (Clip B)
+> - **[Dual color temperature](/wiki/color-grading-prompts)** — "cold blue rain light with warm orange explosion flashes" — complementary colors (teal & orange) create blockbuster contrast
+> - **[Slow motion for impact](/wiki/motion-dynamics)** — 60fps slow-mo on the firing sequence lets the audience absorb each detail (casings, tracers, muzzle flash)
+> - **[Reflections sell realism](/wiki/prompt-engineering-fundamentals)** — "helmet visor reflecting distant explosions" adds environmental interaction without a second action verb
 
 ---
 
@@ -256,6 +302,15 @@ harsh direct sunlight casting sharp shadows across the canyon,
 wide shot, cinematic 21:9, 60fps slow motion
 ```
 
+> **Principles applied:**
+>
+> - **[Camera movement: crane](/wiki/camera-movements)** — "slow crane rising to reveal the canyon" motivates the camera vertically to unveil scale (Clip A)
+> - **[Camera movement: tracking](/wiki/camera-movements)** — following the shell trajectory creates cause-and-effect storytelling in a single unbroken move (Clip B)
+> - **[Natural lighting: harsh midday](/wiki/natural-lighting)** — "harsh golden desert sunlight with heat distortion" — strong directional light with a single source is both dramatic and easy for Seedance to render consistently
+> - **[Secondary motion: physics](/wiki/seedance-2#strengths)** — coat billowing, dust swirling, sand shockwave, rock debris cascading. Describing friction and force ("shockwave ripples through sand") rather than just "tank fires"
+> - **[Medium long shot → wide shot progression](/wiki/scene-description-language)** — Clip A frames the player with environment context, Clip B pulls out to epic scale. Shot size escalation matches the escalation of action
+> - **[One motion verb per shot](/wiki/seedance-2#critical-rules)** — Clip A: "stands" (crane moves). Clip B: "fires" (camera tracks)
+
 ---
 
 #### Player 4 — The Ghost
@@ -283,6 +338,15 @@ the shockwave flattening organic structures outward in a ring,
 camera holds wide as the fireball rises with rolling orange and black smoke,
 extreme wide shot, cinematic 21:9, 60fps slow motion
 ```
+
+> **Principles applied:**
+>
+> - **[Mood lighting: horror](/wiki/mood-lighting)** — "dark corridor with red emergency lighting" and "deep shadows" borrow horror lighting vocabulary — underlit, single colored source — to sell the Ghost's menace (Clip A)
+> - **[Rack focus](/wiki/depth-of-field)** — "cloak effect rippling like heat haze as they become solid" gives Seedance a clear focus transition to animate (Clip A)
+> - **[Static camera with breathing movement](/wiki/camera-movements)** — minimal camera lets the cloaking VFX be the star; no competing motion
+> - **[Extreme wide for scale](/wiki/scene-description-language)** — pulling to EWS for the nuclear detonation sells the devastation (Clip B)
+> - **[Temporal phrasing](/wiki/prompt-engineering-fundamentals)** — "descends... impacts... expands... flattening" — sequential verbs in chronological order guide Seedance through the explosion timeline
+> - **[Secondary motion](/wiki/seedance-2#strengths)** — shockwave ring, rolling smoke, red targeting laser cutting through fog. Describing the physics of a nuclear blast gives Seedance specific motion targets
 
 ---
 
@@ -313,6 +377,15 @@ orange fire-light from below casting dramatic uplighting on the mech,
 wide shot, cinematic 21:9, 60fps
 ```
 
+> **Principles applied:**
+>
+> - **[ECU for intimacy](/wiki/scene-description-language)** — extreme close-up on face inside the cockpit forces the viewer into the pilot's claustrophobic POV (Clip A)
+> - **[Low angle for power](/wiki/camera-angles)** — "low angle camera looking up at the Thor" makes the mech feel towering and unstoppable (Clip B)
+> - **[Secondary motion: weight and force](/wiki/seedance-2#strengths)** — "each footstep crushing rubble and sending shockwaves through puddles", "cockpit vibrating with each footfall" — describing weight and impact rather than just movement
+> - **[Practical/motivated lighting](/wiki/lighting-techniques)** — "blue holographic light mixed with amber warning indicators" (Clip A) and "orange fire-light from below casting dramatic uplighting" (Clip B) — every light source has a reason to exist in the scene
+> - **[Camera movement: dolly backward](/wiki/camera-movements)** — retreating from the Thor as it advances creates the feeling of being pushed back by its presence
+> - **[Vibration as camera language](/wiki/camera-movements)** — "static camera with vibration shake" communicates mechanical weight without adding a competing motion verb
+
 ---
 
 #### Player 6 — The Economist
@@ -340,6 +413,15 @@ camera cranes upward from the mineral line to reveal a sprawling base,
 golden afternoon light with industrial haze and steam,
 wide shot, cinematic 21:9, 60fps
 ```
+
+> **Principles applied:**
+>
+> - **[Sci-fi mood lighting](/wiki/mood-lighting)** — "cool blue holographic light with warm amber accent from a desk lamp" — mixing sci-fi cool with a warm practical light humanizes the tech-heavy environment (Clip A)
+> - **[Camera movement: orbit](/wiki/camera-movements)** — orbiting around the player surrounded by holograms reveals the 360° tactical environment
+> - **[Camera movement: crane upward](/wiki/camera-movements)** — rising from mineral line to reveal the base transitions from detail to scale (Clip B)
+> - **[Natural lighting: golden afternoon](/wiki/natural-lighting)** — "golden afternoon light with industrial haze and steam" grounds the macro economy fantasy in tangible atmosphere
+> - **[One motion verb per shot](/wiki/seedance-2#critical-rules)** — Clip A: "stands" (fingers moving is secondary). Clip B: "launches" — the MULEs streaking down is the singular dramatic action
+> - **[Contrast through pacing](/wiki/shot-list-planning)** — this is the quietest Terran segment intentionally. The Economist's cerebral style breaks up the military action of surrounding players
 
 ---
 
@@ -370,6 +452,15 @@ stormy overcast light with medivac searchlight beams cutting through,
 wide shot, cinematic 21:9, 60fps slow motion
 ```
 
+> **Principles applied:**
+>
+> - **[Frame within a frame](/wiki/composition-rules)** — "from inside the medivac" uses the bay door as a natural frame around the character and the battlefield below (Clip A)
+> - **[Dual color temperature](/wiki/color-grading-prompts)** — "cold high-altitude blue with warm interior orange" — exterior/interior color split creates depth
+> - **[Secondary motion](/wiki/seedance-2#strengths)** — wind whipping, harness straps rattling, boost flames, stimpack vapor. Layered physics across both clips
+> - **[Camera movement: descent tracking](/wiki/camera-movements)** — "tracks the descent from above then sweeps to ground level" follows the action's natural arc (Clip B)
+> - **[Temporal phrasing](/wiki/prompt-engineering-fundamentals)** — "descend... doors open... dropping out... brake hard... landing" — chronological action sequence guides Seedance through a multi-beat drop
+> - **[Overcast lighting](/wiki/natural-lighting)** — "stormy overcast light with medivac searchlight beams cutting through" — diffused base light with hard practical beams gives Seedance clear light/shadow contrast
+
 ---
 
 #### Player 8 — The Bio God
@@ -397,6 +488,15 @@ camera tracking laterally at ground level as the army charges past,
 harsh overcast light with dust clouds rising from the stampede,
 wide shot, cinematic 21:9, 60fps slow motion
 ```
+
+> **Principles applied:**
+>
+> - **[Low angle for power](/wiki/camera-angles)** — "slightly low angle" looking up at the player with an army stretching behind them conveys leadership and scale (Clip A)
+> - **[Negative space inverted](/wiki/composition-rules)** — instead of empty space around the subject, the space is filled with thousands of marines — the army IS the character's identity
+> - **[Camera movement: lateral tracking](/wiki/camera-movements)** — tracking at ground level as the army charges past creates visceral proximity and momentum (Clip B)
+> - **[Wardrobe as identity](/wiki/wardrobe-consistency)** — "helmet off, held under one arm" is a deliberate wardrobe choice — it says "leader" and also makes the face visible for @ reference matching
+> - **[Secondary motion](/wiki/seedance-2#strengths)** — red stimpack vapor trails, medivacs overhead, dust clouds from stampede. Multiple scale layers of secondary physics
+> - **[Overcast diffused + warm horizon glow](/wiki/natural-lighting)** — soft overhead light keeps the army readable while the distant glow adds drama to the horizon
 
 ---
 
@@ -426,6 +526,15 @@ high angle camera looking down, slow drift forward over the destruction,
 night scene with fire-light illuminating smoke columns from below,
 wide shot, cinematic 21:9, 60fps
 ```
+
+> **Principles applied:**
+>
+> - **[Mood lighting: noir](/wiki/mood-lighting)** — "face illuminated only by screen glow" and "total darkness" — film noir single-source lighting for a covert ops character (Clip A)
+> - **[Rack focus](/wiki/depth-of-field)** — "rack focus from screen to face" gives Seedance a clear focus transition to animate, shifting attention from intel to intent
+> - **[High angle camera](/wiki/camera-angles)** — "high angle looking down, slow drift forward over the destruction" creates a surveillance/god's-eye perspective matching the Banshee's unseen aerial assault (Clip B)
+> - **[Negative prompting principle](/wiki/negative-prompts)** — the cloaked banshees "shimmer into visibility" — describing the absence-then-presence is a temporal phrasing technique
+> - **[Night lighting with fire-light](/wiki/mood-lighting)** — "only explosion light revealing momentary glimpses" — no ambient light, only the destruction itself illuminates the scene
+> - **[One motion verb per shot](/wiki/seedance-2#critical-rules)** — Clip A: "watches" (static). Clip B: "shimmer into visibility" — the reveal is the action, explosions are consequences
 
 ---
 
@@ -461,6 +570,15 @@ purple-green toxic atmosphere with bioluminescent ground glow,
 extreme wide shot, cinematic 21:9, 60fps
 ```
 
+> **Principles applied:**
+>
+> - **[Low angle for power](/wiki/camera-angles)** — "slight low angle" looking up at the Swarm Lord on a pulsating platform conveys dominion over the hive (Clip A)
+> - **[Camera movement: crane reveal](/wiki/camera-movements)** — "cranes upward to reveal the true scale — millions stretching to horizon" — the crane is motivated by the narrative need to show overwhelming numbers (Clip B)
+> - **[Atmosphere: eerie](/wiki/scene-description-language)** — "bioluminescent purple veins", "organic tendrils slowly writhing" — eerie vocabulary (fog, underlit, muted palette) adapted to Zerg biology
+> - **[Secondary motion](/wiki/seedance-2#strengths)** — tendrils writhing, organic spores rising, swarm splitting and converging like water. Describing fluid physics for organic movement
+> - **[Color palette: Zerg faction](/wiki/color-grading-prompts)** — deep purple + toxic green consistency across both clips anchors the faction identity
+> - **[Shot size escalation](/wiki/scene-description-language)** — MCU portrait → EWS action reveal. The jump from intimate to extreme wide mirrors the Swarm Lord's power: one mind controlling millions
+
 ---
 
 #### Player 11 — The Lurker
@@ -489,6 +607,15 @@ underground green glow bleeding through cracks in the earth,
 wide shot, cinematic 21:9, 60fps slow motion
 ```
 
+> **Principles applied:**
+>
+> - **[Mood lighting: horror](/wiki/mood-lighting)** — "near-total darkness with green bioluminescent rim light" — horror vocabulary (underlit, deep shadows, flickering) for ambush predator identity (Clip A)
+> - **[Low angle ground-level camera](/wiki/camera-angles)** — "camera at ground level looking along the line of erupting spines" puts the viewer in the kill zone (Clip B)
+> - **[Secondary motion: destruction physics](/wiki/seedance-2#strengths)** — "concrete and steel shattering outward", "dust and debris suspended in slow motion" — describing material properties (concrete, steel, bone) gives Seedance specific physics to simulate
+> - **[Slow motion for impact](/wiki/motion-dynamics)** — 60fps slow-mo suspends the destruction mid-frame, letting the audience absorb the violence
+> - **[Lighting from below](/wiki/lighting-techniques)** — "underground green glow bleeding through cracks in the earth" — the light source is the attack itself, motivating upward-cast shadows
+> - **[Static camera for tension](/wiki/camera-movements)** — Clip A uses "static camera with subtle organic movement" — stillness builds dread before the eruption
+
 ---
 
 #### Player 12 — The Mutalisk Flock
@@ -516,6 +643,15 @@ camera tracking the lead mutalisk in a high-speed chase shot,
 dark sky with green acid glow and orange explosion light,
 dynamic wide shot, cinematic 21:9, 60fps
 ```
+
+> **Principles applied:**
+>
+> - **[Camera movement: tilt](/wiki/camera-movements)** — "slow pan upward from player to the flock above" — vertical tilt reveals the scale of the mutalisk formation above (Clip A)
+> - **[Camera movement: tracking chase](/wiki/camera-movements)** — "tracking the lead mutalisk in a high-speed chase shot" — camera follows the subject, creating kinetic energy (Clip B)
+> - **[Silhouette composition](/wiki/composition-rules)** — "flock silhouetted against dual moons" — silhouettes are high-contrast, easy for AI to render, and instantly dramatic
+> - **[Secondary motion](/wiki/seedance-2#strengths)** — "wind from wings whipping hair and clothing", "glaive wurms bouncing/ricocheting" — wind physics (Clip A) and projectile physics (Clip B)
+> - **[Avoid "fast" keyword](/wiki/seedance-2#critical-rules)** — the chase shot is described as "high-speed" through context (diving, rapid succession) without using "fast" directly, which degrades Seedance quality
+> - **[Dual color contrast](/wiki/color-grading-prompts)** — "green acid glow and orange explosion light" — complementary colors create visual separation between attack and impact
 
 ---
 
@@ -546,6 +682,15 @@ warm organic amber interior light with purple bioluminescent exterior,
 medium wide shot, cinematic 21:9, 60fps
 ```
 
+> **Principles applied:**
+>
+> - **[Center framing / symmetry](/wiki/composition-rules)** — player on throne, centered, with creep extending outward symmetrically. Kubrick-style power framing (Clip A)
+> - **[Camera movement: orbit](/wiki/camera-movements)** — orbiting the hatchery during the birthing cycle gives a 360° view of the transformation — reveals dimensionality (Clip B)
+> - **[Temporal phrasing: sequence](/wiki/prompt-engineering-fundamentals)** — "injects... swelling... bursting... morphing... surging" — chronological chain guides Seedance through the evolution timeline (Clip B)
+> - **[Warm/cool interior/exterior split](/wiki/color-grading-prompts)** — "warm organic amber interior with purple bioluminescent exterior" — the hatchery glows warm inside but the creep world outside is cold purple
+> - **[Subtle character action](/wiki/prompt-engineering-fundamentals)** — "fingers tapping deliberately" — a small, specific gesture that communicates calculation without competing with the camera's dolly-in
+> - **[Pacing contrast](/wiki/shot-list-planning)** — the Queen is deliberately slower-paced (creation, not destruction) as a tonal break in the Zerg section
+
 ---
 
 #### Player 14 — The Viper
@@ -574,6 +719,15 @@ camera tracks the abduct pull in a smooth lateral follow,
 green toxic haze with golden shield-glow bleeding through,
 wide shot, cinematic 21:9, 60fps slow motion
 ```
+
+> **Principles applied:**
+>
+> - **[Atmosphere: eerie](/wiki/scene-description-language)** — "toxic fog cloud", "barely visible", "parasitic tendrils reaching" — eerie descriptors (fog, underlit, stillness) at maximum intensity (Clip A)
+> - **[Lens effect: fog across lens](/wiki/lens-choices)** — "fog drifting across the lens" breaks the fourth wall subtly, adding immersion
+> - **[Camera movement: lateral track](/wiki/camera-movements)** — "tracks the abduct pull in a smooth lateral follow" — camera follows the colossus being yanked sideways, a single clean motion line (Clip B)
+> - **[Secondary motion: weight and force](/wiki/seedance-2#strengths)** — "the massive machine crashing into the ground with shattering force" — describing the weight of a falling colossus gives Seedance a physics problem to solve
+> - **[No visible light source](/wiki/lighting-techniques)** — "toxic green diffused light with no visible light source" — ambient lighting with no key light creates the Viper's "nowhere is safe" atmosphere
+> - **[Multi-faction interaction](/wiki/prompt-engineering-fundamentals)** — Protoss shields flickering, colossus crashing, zerglings swarming — showing Zerg vs. Protoss sells the matchup fantasy
 
 ---
 
@@ -604,6 +758,15 @@ harsh overhead light casting sharp shadows in the dust cloud,
 wide shot, cinematic 21:9, 60fps slow motion
 ```
 
+> **Principles applied:**
+>
+> - **[Low angle for emergence](/wiki/camera-angles)** — "low angle camera looking up as they emerge" — the upward gaze mirrors the roaches' literal upward eruption from underground (Clip A)
+> - **[Transition lighting](/wiki/lighting-techniques)** — "underground amber glow transitioning to surface overcast light" — the light shift tells a spatial story (below ground → above ground) without words
+> - **[Secondary motion: material destruction](/wiki/seedance-2#strengths)** — "dirt and rock debris launching upward in geysers", "acid spraying with sizzling dissolving effect" — specific material interactions (acid on metal = sizzle + dissolve)
+> - **[Slow motion for chaos](/wiki/motion-dynamics)** — 60fps slow-mo turns the eruption into a frozen sculpture of violence the audience can read
+> - **[Harsh overhead light](/wiki/natural-lighting)** — "harsh overhead light casting sharp shadows in the dust cloud" — top-down hard light in a dust cloud creates visible light shafts, a strong visual Seedance renders well
+> - **[One motion verb per shot](/wiki/seedance-2#critical-rules)** — Clip A: "emerges". Clip B: "erupt" — singular action, consequences follow naturally
+
 ---
 
 #### Player 16 — The Brood Lord
@@ -631,6 +794,15 @@ camera slowly descends from brood lord altitude to ground carnage,
 dark overcast with purple atmospheric glow and ground fire-light,
 extreme wide shot transitioning to wide shot, cinematic 21:9, 60fps
 ```
+
+> **Principles applied:**
+>
+> - **[Camera movement: tilt](/wiki/camera-movements)** — "slow tilt upward from player to the brood lords" — vertical reveal that matches the brood lord's aerial dominance (Clip A)
+> - **[Camera movement: descent](/wiki/camera-movements)** — "slowly descends from brood lord altitude to ground carnage" — top-down to ground level mirrors the broodlings' rain-like attack pattern (Clip B)
+> - **[Silhouette and shadow](/wiki/composition-rules)** — "shadows darkening the cliff as they pass" — using the brood lords' shadows as a compositional element that signals their arrival before they're fully revealed
+> - **[Atmosphere: eerie scale](/wiki/scene-description-language)** — "floating past overhead like living airships", "raining like a plague" — metaphorical language that Seedance interprets as specific movement patterns
+> - **[Multi-shot auto-cut](/wiki/seedance-2#strengths)** — "extreme wide shot transitioning to wide shot" — Seedance's multi-shot capability can handle this natural cut within a single 10s generation
+> - **[Purple lightning lighting](/wiki/mood-lighting)** — "purple lightning illuminating the clouds" — intermittent light source creates stroboscopic drama without a fixed setup
 
 ---
 
@@ -660,6 +832,15 @@ camera positioned in the path of the volley, spines flying past lens,
 dark scene with green tracer-light from the acid spines,
 dynamic wide shot, cinematic 21:9, 60fps slow motion
 ```
+
+> **Principles applied:**
+>
+> - **[Camera movement: orbit](/wiki/camera-movements)** — "slow orbit around the pair" — circling two subjects back-to-back reveals the defensive stance from all angles (Clip A)
+> - **[POV camera / in the line of fire](/wiki/camera-angles)** — "camera positioned in the path of the volley, spines flying past lens" — placing the camera where the target would be creates visceral threat (Clip B)
+> - **[Dual-subject composition](/wiki/composition-rules)** — player back-to-back with hydralisk — the pairing tells the character's story (symbiosis with the swarm) through composition alone
+> - **[Secondary motion: projectile trails](/wiki/seedance-2#strengths)** — "each spine trailing green acid vapor", "metal fragments and sparks showering" — describing projectile physics (trails, impacts, debris) at two scales
+> - **[Moonlight + bioluminescence](/wiki/natural-lighting)** — "blue-purple moonlight with green bioluminescent ground glow" — two cool light sources at different heights create depth without a traditional three-point setup
+> - **[Slow motion for projectiles](/wiki/motion-dynamics)** — 60fps slow-mo on the spine volley lets each individual spine be readable, turning chaos into choreography
 
 ---
 
@@ -696,6 +877,15 @@ blinding white-gold energy against dark purple sky,
 extreme wide shot, cinematic 21:9, 60fps slow motion
 ```
 
+> **Principles applied:**
+>
+> - **[Low angle for power](/wiki/camera-angles)** — "slight low angle" looking up at the Templar as golden energy crackles between outstretched hands — elevates the character to mythic status (Clip A)
+> - **[Shallow depth of field](/wiki/depth-of-field)** — "shallow depth of field" isolates the Templar's face against the blurred crystal pillars, forcing attention to the eyes blazing with energy
+> - **[Extreme wide for devastation](/wiki/scene-description-language)** — "camera holds wide as the storm expands" — EWS lets the audience see the full radius of the psionic storm's destruction (Clip B)
+> - **[Secondary motion: destruction at scale](/wiki/seedance-2#strengths)** — "ground cracking and lifting upward", "vehicles tumbling through the air inside the vortex" — multiple physics layers: ground deformation, aerial tumbling, energy expansion
+> - **[Complementary faction color clash](/wiki/color-grading-prompts)** — "blinding white-gold energy against dark purple sky" — Protoss gold vs. dark atmosphere creates maximum contrast
+> - **[One motion verb per shot](/wiki/seedance-2#critical-rules)** — Clip A: "levitates" (static hover). Clip B: "channels" — the storm's expansion is a consequence, not a competing verb
+
 ---
 
 #### Player 19 — The Stalker
@@ -723,6 +913,15 @@ camera tracks the blink pattern with quick snapping movements,
 dark battlefield with cyan blink-flashes and orange explosion contrast,
 dynamic medium wide shot, cinematic 21:9, 60fps
 ```
+
+> **Principles applied:**
+>
+> - **[Backlit silhouette](/wiki/composition-rules)** — "silhouette sharp against the energy glow" — backlighting from the gateway creates instant drama with minimal complexity (Clip A)
+> - **[Camera: snap tracking](/wiki/camera-movements)** — "tracks the blink pattern with quick snapping movements" — camera mimics the teleportation rhythm, creating visual syncopation
+> - **[Complementary color contrast](/wiki/color-grading-prompts)** — "cyan blink-flashes and orange explosion contrast" — cool vs. warm at maximum saturation
+> - **[Particle effects for VFX](/wiki/seedance-2#strengths)** — "particle disintegration and reformation visible at each position", "cyan afterimage that fades" — describing the specific VFX of teleportation gives Seedance concrete visual targets
+> - **[Secondary motion: environment response](/wiki/seedance-2#strengths)** — "shells that explode where it was a moment before" — the environment reacts to where the stalker was, reinforcing the teleportation
+> - **[Avoid "fast" keyword](/wiki/seedance-2#critical-rules)** — "rapid micro-teleportations" conveys speed through the action itself, not the word "fast"
 
 ---
 
@@ -753,6 +952,15 @@ deep space with golden energy-light illuminating the carrier hull,
 wide shot, cinematic 21:9, 60fps
 ```
 
+> **Principles applied:**
+>
+> - **[Depth of field](/wiki/depth-of-field)** — "shallow depth of field" on the bridge portrait isolates the commander against the golden viewport (Clip A)
+> - **[Frame within a frame](/wiki/composition-rules)** — the viewport acts as a natural frame around the planet and interceptors, layering the composition (Clip A)
+> - **[Camera movement: orbit](/wiki/camera-movements)** — "orbits the carrier as interceptors swarm around it" — the orbit reveals the 3D space the interceptors fill, showing scale from every angle (Clip B)
+> - **[Secondary motion: swarm physics](/wiki/seedance-2#strengths)** — "dozens of golden drones streaming outward in organized formations" then "beams converging" — two motion phases (disperse → converge) within one clip
+> - **[Warm golden consistency](/wiki/color-grading-prompts)** — both clips maintain the Protoss gold palette: golden bridge lighting (Clip A), golden drones and energy-light (Clip B)
+> - **[Motivated lighting](/wiki/lighting-techniques)** — "golden energy-light illuminating the carrier hull" — the interceptors' beams ARE the light source, so the lighting is narratively motivated
+
 ---
 
 #### Player 21 — The Dark Templar
@@ -781,6 +989,15 @@ camera follows the destruction path in a smooth dolly forward,
 night scene with only explosion light revealing momentary glimpses,
 wide shot, cinematic 21:9, 60fps
 ```
+
+> **Principles applied:**
+>
+> - **[Single practical light source](/wiki/lighting-techniques)** — "deep darkness with single emerald warp-blade light source" — one light illuminating one face is the most dramatic setup possible (Clip A)
+> - **[ECU for intensity](/wiki/scene-description-language)** — "extreme close-up, static camera" — the smallest shot size in the entire storyboard, for the most hidden character. The intimacy is unsettling.
+> - **[Absence as storytelling](/wiki/prompt-engineering-fundamentals)** — "invisible shimmer", "no visible attacker", "briefly visible... then vanishing" — describing what ISN'T seen is a temporal phrasing technique that creates mystery
+> - **[Camera movement: forward dolly through destruction](/wiki/camera-movements)** — "follows the destruction path in a smooth dolly forward" — camera follows the consequences, not the character (Clip B)
+> - **[Night with fire-light only](/wiki/mood-lighting)** — "only explosion light revealing momentary glimpses" — zero ambient light; the dark templar's attacks are the only illumination
+> - **[Horror lighting vocabulary](/wiki/mood-lighting)** — this is pure horror genre technique applied to a StarCraft assassin: darkness, flickering reveals, unseen threat
 
 ---
 
@@ -811,6 +1028,15 @@ intense golden thermal light against dark battlefield,
 wide shot, cinematic 21:9, 60fps slow motion
 ```
 
+> **Principles applied:**
+>
+> - **[Extreme low angle](/wiki/camera-angles)** — "extreme low angle, slow tilt upward from player to colossus head" — maximum vertical disparity between the human and the machine. The tilt IS the reveal of scale (Clip A)
+> - **[Leading lines](/wiki/composition-rules)** — "camera positioned low looking up along the beam line" — the thermal lance beams become leading lines drawing the eye along the destruction path (Clip B)
+> - **[Secondary motion: thermal physics](/wiki/seedance-2#strengths)** — "melted rock and slag glowing in the beam's wake", "everything in the beam path igniting" — describing heat transfer and material transformation
+> - **[Scale through human reference](/wiki/scene-description-language)** — "the player dwarfed by the massive walking platform's leg" — placing a human next to the machine gives the audience a scale reference
+> - **[Motivated lighting from weapons](/wiki/lighting-techniques)** — "golden energy glow from the lances casting warm light downward" (Clip A) and "intense golden thermal light against dark battlefield" (Clip B) — the weapons light the scene
+> - **[Slow motion for sweep](/wiki/motion-dynamics)** — slow-mo on the beam sweep lets the audience trace the destruction line frame by frame
+
 ---
 
 #### Player 23 — The Archon
@@ -839,6 +1065,15 @@ camera tracks the archon's advance at ground level,
 overwhelming golden-white light casting everything in sharp contrast,
 wide shot, cinematic 21:9, 60fps slow motion
 ```
+
+> **Principles applied:**
+>
+> - **[Camera movement: dolly backward](/wiki/camera-movements)** — "slow dolly backward as the energy builds outward" — the camera retreats as the energy expands, as if being pushed back by the force (Clip A)
+> - **[Temporal phrasing: transformation](/wiki/prompt-engineering-fundamentals)** — "two ghostly forms merging into a blazing sphere" → "growing brighter and more intense" → "ground cracking beneath" — three-beat escalation within a single clip
+> - **[Overwhelming light as style](/wiki/lighting-techniques)** — "blinding white-gold center with blue-purple outer corona" (Clip A), "overwhelming golden-white light casting everything in sharp contrast" (Clip B) — the Archon IS the light source
+> - **[Secondary motion: force and heat](/wiki/seedance-2#strengths)** — "energy pulse disintegrating zerglings in waves", "carapace cracking and burning from proximity alone" — describing radiant energy effects on nearby targets
+> - **[Ground-level tracking](/wiki/camera-movements)** — "tracks the archon's advance at ground level" — low camera + advancing energy being creates overwhelming power (Clip B)
+> - **[Specificity over vagueness](/wiki/prompt-engineering-fundamentals)** — "scorched in a perfect circle around the archon" — specific geometric detail (circle) gives Seedance a clear visual instruction
 
 ---
 
@@ -869,6 +1104,15 @@ the beam's color shift illuminating surrounding space,
 medium wide shot, cinematic 21:9, 60fps slow motion
 ```
 
+> **Principles applied:**
+>
+> - **[Pan as reveal](/wiki/camera-movements)** — "slow pan right revealing the fleet through the window" — horizontal pan unveils the fleet gradually, building anticipation (Clip A)
+> - **[Static camera hold on destruction](/wiki/camera-movements)** — "holds steady on the point of contact as damage spreads" — stillness while the damage grows outward creates tension. The viewer can't look away. (Clip B)
+> - **[Color shift as narrative](/wiki/color-grading-prompts)** — "the beam intensifying from blue to yellow to searing white" — color progression tells the story of increasing power without extra words
+> - **[Prismatic / refraction motif](/wiki/style-transfer-prompts)** — "prismatic crystals refracting starlight" (Clip A), "prismatic beam" (Clip B) — consistent visual motif linking both clips
+> - **[Secondary motion: material failure](/wiki/seedance-2#strengths)** — "armor plating glowing red then white-hot, hull plates buckling and peeling away" — specific metal-failure physics (glow → buckle → peel) for Seedance to simulate
+> - **[Slow motion for precision destruction](/wiki/motion-dynamics)** — slow-mo on a focused beam cutting through armor is surgical, contrasting the chaos of other action clips
+
 ---
 
 #### Player 25 — The Final Boss
@@ -898,6 +1142,15 @@ reality-warping light distortion with golden energy corona,
 extreme wide shot, cinematic 21:9, 60fps slow motion
 ```
 
+> **Principles applied:**
+>
+> - **[Wide shot pushing to medium: shot size transition](/wiki/scene-description-language)** — "wide shot slowly pushing in to medium shot" — the camera narrows onto the final player as if destiny is selecting them (Clip A)
+> - **[Low angle for ultimate power](/wiki/camera-angles)** — "slight low angle" on the temple peak with battles below — the Final Boss stands above all three factions
+> - **[Calm amid chaos](/wiki/prompt-engineering-fundamentals)** — "expression calm amid the chaos, arms folded behind their back" — stillness as a character choice. The most powerful player is the one who doesn't move.
+> - **[Camera movement: orbit for revelation](/wiki/camera-movements)** — "slowly orbits the vortex capturing the scale of destruction" — orbital camera reveals the full 360° of gravitational devastation (Clip B)
+> - **[Reality-warping as style](/wiki/style-transfer-prompts)** — "vortex distorting light and space around it like a black hole", "terrain itself bending" — describing physics-breaking phenomena gives Seedance specific distortion targets
+> - **[Golden hour for the final player](/wiki/natural-lighting)** — "golden hour light breaking through storm clouds onto the temple peak" — the single warmest, most heroic natural light reserved for the last player
+
 ---
 
 ## FINALE — All Players Montage (7:00 – 7:30)
@@ -921,6 +1174,15 @@ each army lit in its faction color against a dark neutral battlefield,
 cinematic 21:9, 60fps slow motion
 ```
 
+> **Principles applied:**
+>
+> - **[Composition: triangular convergence](/wiki/composition-rules)** — three armies from three directions creates a triangular collision geometry. Balanced, symmetrical, and instantly readable.
+> - **[Faction color as composition](/wiki/color-grading-prompts)** — "each army lit in its faction color against a dark neutral battlefield" — color IS the composition; three distinct palettes self-organize the frame
+> - **[Freeze frame for impact](/wiki/motion-dynamics)** — "freeze at the moment of impact" — stopping time at the collision point creates the ultimate cliffhanger. The video ends at maximum tension.
+> - **[Extreme wide aerial for finale](/wiki/scene-description-language)** — EWS mirrors the opening Shot 2a aerial wide, bookending the video with matching scale
+> - **[Slow motion + slow dolly](/wiki/seedance-2#critical-rules)** — one speed modifier (slow-mo) + one camera motion (dolly forward). Clean and controlled for the final image.
+> - **[Text in post, never in prompt](/wiki/seedance-2#limitations)** — tournament name added over the freeze frame in DaVinci Resolve, not generated by Seedance
+>
 > Tournament name + date added in post over the freeze frame.
 
 ---
