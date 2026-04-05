@@ -2,12 +2,13 @@ import Link from "next/link";
 import {
   getAllCategories,
   getArticlesByCategory,
-  CATEGORY_COLORS,
-  articles,
+  getArticles,
 } from "@/lib/articles";
+import { CATEGORY_COLORS } from "@/lib/types";
 
 export default function Home() {
   const categories = getAllCategories();
+  const allArticles = getArticles();
 
   return (
     <div>
@@ -20,7 +21,7 @@ export default function Home() {
           Your personal knowledge base for creating great AI-generated videos.
           {" "}
           <span className="text-gray-500">
-            {articles.length} articles across {categories.length} categories.
+            {allArticles.length} articles across {categories.length} categories.
           </span>
         </p>
       </div>

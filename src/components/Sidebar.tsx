@@ -2,11 +2,23 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { articles, getAllCategories, getArticlesByCategory, CATEGORY_COLORS } from "@/lib/articles";
+import type { ArticleMeta, Category } from "@/lib/types";
+import { CATEGORY_COLORS } from "@/lib/types";
 
-export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
+interface SidebarProps {
+  categories: Category[];
+  articlesByCategory: Record<string, ArticleMeta[]>;
+  totalArticles: number;
+  onNavigate?: () => void;
+}
+
+export default function Sidebar({
+  categories,
+  articlesByCategory,
+  totalArticles,
+  onNavigate,
+}: SidebarProps) {
   const pathname = usePathname();
-  const categories = getAllCategories();
 
   return (
     <nav className="p-4 space-y-4 text-sm">
@@ -38,7 +50,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
             {cat}
           </h3>
           <ul className="space-y-0.5">
-            {getArticlesByCategory(cat).map((article) => (
+            {(articlesByCategory[cat] ?? []).map((article) => (
               <li key={article.slug}>
                 <Link
                   href={`/wiki/${article.slug}`}
@@ -59,7 +71,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
       ))}
 
       <div className="pt-4 border-t border-gray-200 text-xs text-gray-400">
-        {articles.length} articles
+        {totalArticles} articles
       </div>
     </nav>
   );

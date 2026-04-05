@@ -3,8 +3,23 @@
 import { useState } from "react";
 import Sidebar from "./Sidebar";
 import SearchBar from "./SearchBar";
+import type { ArticleMeta, Category } from "@/lib/types";
 
-export default function WikiLayout({ children }: { children: React.ReactNode }) {
+interface WikiLayoutProps {
+  children: React.ReactNode;
+  categories: Category[];
+  articlesByCategory: Record<string, ArticleMeta[]>;
+  allArticles: ArticleMeta[];
+  totalArticles: number;
+}
+
+export default function WikiLayout({
+  children,
+  categories,
+  articlesByCategory,
+  allArticles,
+  totalArticles,
+}: WikiLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -23,7 +38,12 @@ export default function WikiLayout({ children }: { children: React.ReactNode }) 
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <Sidebar onNavigate={() => setSidebarOpen(false)} />
+        <Sidebar
+          categories={categories}
+          articlesByCategory={articlesByCategory}
+          totalArticles={totalArticles}
+          onNavigate={() => setSidebarOpen(false)}
+        />
       </aside>
 
       {/* Main content */}
@@ -39,7 +59,7 @@ export default function WikiLayout({ children }: { children: React.ReactNode }) 
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
-          <SearchBar />
+          <SearchBar articles={allArticles} />
         </header>
 
         {/* Page content */}

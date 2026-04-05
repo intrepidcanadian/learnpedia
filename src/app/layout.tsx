@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import WikiLayout from "@/components/WikiLayout";
+import { getAllCategories, getArticlesByCategory, getAllArticleMeta, getArticles } from "@/lib/articles";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,13 +25,31 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const categories = getAllCategories();
+  const allArticles = getAllArticleMeta();
+  const totalArticles = getArticles().length;
+
+  const articlesByCategory: Record<string, typeof allArticles> = {};
+  for (const cat of categories) {
+    articlesByCategory[cat] = getArticlesByCategory(cat).map(
+      ({ slug, title, category, summary }) => ({ slug, title, category, summary })
+    );
+  }
+
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <WikiLayout>{children}</WikiLayout>
+        <WikiLayout
+          categories={categories}
+          articlesByCategory={articlesByCategory}
+          allArticles={allArticles}
+          totalArticles={totalArticles}
+        >
+          {children}
+        </WikiLayout>
       </body>
     </html>
   );

@@ -1,14 +1,11 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import {
-  getArticle,
-  articles,
-  CATEGORY_COLORS,
-  type Article,
-} from "@/lib/articles";
+import { getArticle, getArticles } from "@/lib/articles";
+import { CATEGORY_COLORS } from "@/lib/types";
+import type { Article } from "@/lib/types";
 
 export function generateStaticParams() {
-  return articles.map((a) => ({ slug: a.slug }));
+  return getArticles().map((a) => ({ slug: a.slug }));
 }
 
 export async function generateMetadata({
@@ -34,8 +31,9 @@ export default async function WikiArticle({
   const article = getArticle(slug);
   if (!article) notFound();
 
+  const allArticles = getArticles();
   const relatedArticles = article.relatedSlugs
-    .map((s) => articles.find((a) => a.slug === s))
+    .map((s) => allArticles.find((a) => a.slug === s))
     .filter(Boolean) as Article[];
 
   return (
@@ -63,9 +61,21 @@ export default async function WikiArticle({
         dangerouslySetInnerHTML={{ __html: article.content }}
       />
 
+      {/* Edit on GitHub link */}
+      <div className="mt-8 pt-4 border-t border-gray-100">
+        <a
+          href={`https://github.com/intrepidcanadian/learnpedia/edit/main/content/${getCategoryFolder(article.category)}/${article.slug}.md`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-gray-400 hover:text-blue-600 transition-colors"
+        >
+          Edit this page on GitHub &rarr;
+        </a>
+      </div>
+
       {/* Related Articles */}
       {relatedArticles.length > 0 && (
-        <div className="mt-12 pt-8 border-t border-gray-200">
+        <div className="mt-8 pt-8 border-t border-gray-200">
           <h2 className="text-lg font-bold text-gray-900 mb-4">Related Articles</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {relatedArticles.map((related) => (
@@ -92,4 +102,18 @@ export default async function WikiArticle({
       )}
     </article>
   );
+}
+
+function getCategoryFolder(category: string): string {
+  const map: Record<string, string> = {
+    Prompting: "prompting",
+    "Camera & Composition": "camera-composition",
+    Lighting: "lighting",
+    "Character Consistency": "character-consistency",
+    "Motion & Animation": "motion-animation",
+    "Post-Production": "post-production",
+    "Tools & Platforms": "tools-platforms",
+    Workflows: "workflows",
+  };
+  return map[category] ?? "prompting";
 }

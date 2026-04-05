@@ -2,11 +2,21 @@
 
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { searchArticles, type Article } from "@/lib/articles";
+import type { ArticleMeta } from "@/lib/types";
 
-export default function SearchBar() {
+function searchArticles(allArticles: ArticleMeta[], query: string): ArticleMeta[] {
+  const lower = query.toLowerCase();
+  return allArticles.filter(
+    (a) =>
+      a.title.toLowerCase().includes(lower) ||
+      a.summary.toLowerCase().includes(lower) ||
+      a.category.toLowerCase().includes(lower)
+  );
+}
+
+export default function SearchBar({ articles }: { articles: ArticleMeta[] }) {
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState<Article[]>([]);
+  const [results, setResults] = useState<ArticleMeta[]>([]);
   const [open, setOpen] = useState(false);
   const [selectedIdx, setSelectedIdx] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
@@ -14,14 +24,14 @@ export default function SearchBar() {
 
   useEffect(() => {
     if (query.length >= 2) {
-      setResults(searchArticles(query).slice(0, 8));
+      setResults(searchArticles(articles, query).slice(0, 8));
       setOpen(true);
       setSelectedIdx(0);
     } else {
       setResults([]);
       setOpen(false);
     }
-  }, [query]);
+  }, [query, articles]);
 
   useEffect(() => {
     function handleClick(e: MouseEvent) {
