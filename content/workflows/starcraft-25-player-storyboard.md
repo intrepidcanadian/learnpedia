@@ -48,15 +48,24 @@ A complete production storyboard for introducing 25 StarCraft players in a cinem
 
 ## Pre-Production Checklist
 
-### 1. Character Reference Assets
+### 1. The Bridging Problem
 
-For each player, prepare a **@ reference package**:
+The hero character `@` reference only locks the **player's face and costume**. But each player segment has 2 clips (Clip A portrait → Clip B action) that also need to match on:
 
-- **Portrait image** — Stylized illustration of the player (NOT real face — Seedance blocks real faces). Use a consistent art style: semi-realistic digital painting, dramatic lighting, faction-colored accent light on face.
-- **Faction icon** — Terran/Zerg/Protoss emblem as overlay (add in post — Seedance garbles text/logos).
-- **Signature unit image** — Each player's iconic unit rendered in the same art style.
+- **Signature unit** — the siege tank in Clip A must be the same siege tank in Clip B
+- **Environment** — the canyon, bridge, hive platform must look identical across both clips
+- **Lighting conditions** — color temperature, time of day, atmosphere must carry over
+- **Props and set dressing** — consoles, cockpit interiors, organic structures
 
-**Art style prompt for generating portraits (use Midjourney/Flux first):**
+Without explicit bridging, Seedance generates each clip independently and you get two slightly different siege tanks in two different canyons.
+
+### 2. Bridging Asset System
+
+For each player, prepare **4 reference layers** (not just the character):
+
+#### Layer 1: Character Reference (`@character`)
+
+The player's face and costume. Same as before.
 
 ```
 "Semi-realistic digital portrait of a [NATIONALITY] esports competitor
@@ -66,7 +75,89 @@ dark background, cyberpunk-military aesthetic, high detail,
 painterly digital art style, 4K"
 ```
 
-### 2. Faction Color Palettes
+#### Layer 2: Unit/Vehicle Reference (`@unit`)
+
+A standalone hero render of the player's signature unit. Generate this ONCE in Midjourney/Flux, then use as `@object` reference in both Clip A and Clip B.
+
+```
+"Detailed render of a [UNIT NAME] from StarCraft,
+[SPECIFIC DESIGN DETAILS — markings, damage, color scheme],
+[FACTION COLOR LIGHTING], 3/4 angle view,
+dark neutral background, high detail, concept art style, 4K"
+```
+
+**Why this matters:** A "siege tank" prompt without a reference image gives you a generic tank each time. With a reference image, you get the SAME tank — same turret shape, same weathering, same paint scheme — across both clips.
+
+#### Layer 3: Environment Reference (`@scene`)
+
+A still image establishing the environment both clips share. Generate this as a wide establishing shot, then use as scene reference.
+
+```
+"[ENVIRONMENT DESCRIPTION] — [LOCATION], [TIME OF DAY],
+[WEATHER/ATMOSPHERE], [KEY LANDMARKS OR SET PIECES],
+[FACTION COLOR PALETTE], [LIGHTING SETUP],
+wide shot, concept art style, cinematic aspect ratio, 4K"
+```
+
+**Why this matters:** "A scorched canyon" generates a different canyon every time. With a scene reference, the rock formations, sky color, and ground texture stay consistent.
+
+#### Layer 4: Last-Frame Bridge (Clip A → Clip B)
+
+After generating Clip A, **screenshot the final frame** and feed it as the starting image for Clip B's image-to-video generation. This is the strongest consistency tool — Clip B literally begins where Clip A ended.
+
+**Workflow:**
+1. Generate Clip A using `@character` + `@unit` + `@scene`
+2. Export the last frame of the best Clip A take
+3. Feed that frame as i2v input for Clip B, along with the same `@character` + `@unit` references
+4. Write Clip B's prompt as a **motion prompt only** (what changes from the last frame, not what the scene looks like)
+
+### 3. Per-Player Reference Asset Checklist
+
+Every player needs these 4 assets generated BEFORE any video clips:
+
+| Player | @character | @unit | @scene | Last-frame bridge |
+|---|---|---|---|---|
+| 1 — Commander | Portrait, commander uniform | Battlecruiser (specific hull markings, damage) | Bridge interior (consoles, viewport, warning lights) | Last frame of Clip A bridge → Clip B yamato blast |
+| 2 — Marine King | Portrait, marine armor + visor | Marine squad (armor detail, rifle model) | Rain-soaked bunker line (fortification style, rain density) | Last frame of bunker → firing line |
+| 3 — Siege Master | Portrait, desert coat | Siege tank (deployed mode, turret detail, paint) | Scorched canyon (rock formations, sun angle, heat haze) | Last frame of tank turret → shell trajectory |
+| 4 — Ghost | Portrait, cloak-shimmer suit | Nuclear missile (warhead detail, red laser) | Dark corridor (emergency lighting, wall panels) | Last frame of corridor → aerial nuke descent |
+| 5 — Mech Pilot | Portrait, pilot suit + harness | Thor mech (cockpit interior + full exterior) | Burning city (building style, fire positions) | Last frame of cockpit → exterior Thor stride |
+| 6 — Economist | Portrait, command uniform | Orbital command + MULEs (pod design) | Hologram room (display layout, desk, star map) | Last frame of hologram room → mineral line |
+| 7 — Drop Lord | Portrait, jump harness | Medivac (hull markings, bay interior) | Medivac interior (door frame, harness straps) | Last frame of leaning out → descent exterior |
+| 8 — Bio God | Portrait, battle-scarred face | Marine army formation (density, gear variety) | Open battlefield (terrain, horizon, smoke) | Last frame of formation → army charge |
+| 9 — Banshee | Portrait, ops room attire | Banshee (cloaked + visible, engine detail) | Dark ops room (screen layout, red button) | Last frame of ops room → aerial base destruction |
+| 10 — Swarm Lord | Portrait, creep-stained gear | Zergling swarm (limb style, creep texture) | Creep platform + hive (organic architecture, veins) | Last frame of platform → swarm wide |
+| 11 — Lurker | Portrait, shadow-lit face | Lurker spine burst (bone spike shape, eruption) | Spine structure environment (organic walls, drips) | Last frame of shadows → spine eruption |
+| 12 — Mutalisk Flock | Portrait, cliff-edge stance | Mutalisk flock (wing style, formation pattern) | Dark valley + cliff (rock face, dual moons) | Last frame of cliff → mutalisk dive |
+| 13 — Queen | Portrait, throne-seated | Zerg queen + hatchery (organic throne detail) | Hive interior (tissue walls, creep, cocoons) | Last frame of throne → hatchery injection |
+| 14 — Viper | Portrait, fog-shrouded | Viper (body shape, tendril detail) | Toxic fog environment (haze density, color) | Last frame of fog → blinding cloud attack |
+| 15 — Roach King | Portrait, emerging from ground | Roach pack (carapace design, acid color) | Underground → surface transition environment | Last frame of emergence → burrowed eruption |
+| 16 — Brood Lord | Portrait, cliff observer | Brood lord (body shape, underside detail) | Cliff overlook + stormy sky (lightning, clouds) | Last frame of cliff → broodling rain |
+| 17 — Hydralisk | Portrait, defensive stance | Hydralisk (spine crest, fang acid detail) | Moonlit defensive position (terrain, bioluminescence) | Last frame of pair → spine volley |
+| 18 — Templar | Portrait, levitating | High templar (energy crackle, robes) | Psionic platform + crystal pillars (architecture) | Last frame of platform → psionic storm |
+| 19 — Stalker | Portrait, gateway silhouette | Stalker (armor detail, blink effect) | Gateway courtyard (warp energy cascade) | Last frame of gateway → blink sequence |
+| 20 — Carrier Lord | Portrait, bridge commander | Carrier (hull detail, interceptor bays) | Carrier bridge interior (viewport, crystalline surfaces) | Last frame of bridge → interceptor release |
+| 21 — Dark Templar | Portrait, eyes + warp blade | Dark templar (blade shape, cloak shimmer) | Ancient stone chamber (wall texture, darkness) | Last frame of blade ignition → base destruction |
+| 22 — Colossus | Portrait, looking up at mech | Colossus (leg design, thermal lance detail) | Battlefield terrain (ground texture, scale reference) | Last frame of low angle → thermal sweep |
+| 23 — Archon | Portrait, arms raised | Archon formation (energy sphere, corona) | Temple/merging ground (cracking terrain, energy field) | Last frame of merge → archon charge |
+| 24 — Void Ray | Portrait, observatory stance | Void ray (crystal focus, beam emitter) | Observatory deck (crystal architecture, nebula view) | Last frame of observatory → beam lock-on |
+| 25 — Final Boss | Portrait, temple peak | Mothership (hull, vortex generator) | Temple peak + three-valley battlefield below | Last frame of temple calm → vortex activation |
+
+### 4. Reference Generation Order
+
+Generate assets in this order — each step builds on the previous:
+
+1. **Faction environment base images** (3 images — one per faction aesthetic)
+2. **Per-player scene references** (25 images — specific environments)
+3. **Per-player unit references** (25 images — signature units in the right art style)
+4. **Per-player character portraits** (25 images — player faces with faction lighting)
+5. **Generate Clip A for all players** (25 clips — using @character + @unit + @scene)
+6. **Extract last frames from Clip A** (25 screenshots)
+7. **Generate Clip B for all players** (25 clips — using last-frame bridge + @character + @unit)
+
+**Total pre-production image assets: ~78 reference images before any video generation begins.**
+
+### 5. Faction Color Palettes
 
 | Faction | Primary | Accent | Atmosphere |
 |---|---|---|---|
@@ -74,27 +165,30 @@ painterly digital art style, 4K"
 | Zerg | Deep purple (#6B2FA0) | Toxic green (#7CFC00) | Organic, mist, bioluminescence |
 | Protoss | Royal gold (#FFD700) | Cyan energy (#00E5FF) | Crystalline, plasma, light beams |
 
-### 3. Base Prompt Templates
+### 6. Base Prompt Templates
 
 **Seedance 2.0 prompt formula: Subject + Action + Camera + Scene + Style + Constraints**
 
 **Template A — Hero Portrait (5s, first clip)**
 ```
 @[player_ref] stands [POSE] amid [FACTION ENVIRONMENT],
+@[unit_ref] [UNIT POSITION — visible behind/beside/above the player],
 [FACTION-SPECIFIC PARTICLES] swirling around them,
 [LIGHTING DESCRIPTION],
 medium close-up, slow dolly-in with subtle handheld micro-shake, eye level,
 cinematic 21:9, 60fps, shallow depth of field
 ```
 
-**Template B — Action Reveal (5-10s, second clip)**
+**Template B — Action Reveal (5-10s, last-frame bridge + i2v)**
 ```
-@[player_ref]'s signature [UNIT/ABILITY] [ACTION VERB]s across the frame,
+[Starting from the final frame of Clip A as i2v input]
+@[unit_ref] [ACTION VERB]s [MOTION DESCRIPTION],
 [PHYSICS DETAIL — explosions, energy, debris],
 [CAMERA MOVEMENT — crane/orbit/tracking],
-[SCENE ENVIRONMENT],
 [LIGHTING], epic scale, cinematic 21:9, 60fps
 ```
+
+> **Key difference in Template B:** Because we're using last-frame bridging, the prompt only describes what CHANGES — the action and camera movement. The scene, unit, and lighting are already established by the input frame. See [Image-to-Video Techniques](/wiki/image-to-video) for why motion-only prompts work better with i2v.
 
 ---
 
