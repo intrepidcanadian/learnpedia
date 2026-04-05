@@ -7,6 +7,7 @@ related:
   - post-production-workflow
   - shot-list-planning
   - image-to-video
+  - starcraft-25-player-storyboard
 ---
 
 A single great AI clip is easy. A coherent sequence of clips that tells a story — that's the real challenge. Here's the workflow.

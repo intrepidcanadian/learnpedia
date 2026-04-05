@@ -3,6 +3,7 @@ title: "AI Video Tools Overview"
 category: "Tools & Platforms"
 summary: "Comparison of major AI video platforms — Runway, Kling, Sora, Pika, Minimax, Luma, and more."
 related:
+  - seedance-2
   - face-consistency-methods
   - prompt-engineering-fundamentals
   - image-to-video
