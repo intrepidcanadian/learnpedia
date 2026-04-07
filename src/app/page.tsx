@@ -4,99 +4,112 @@ import {
   getArticlesByCategory,
   getArticles,
 } from "@/lib/articles";
-import { CATEGORY_COLORS } from "@/lib/types";
 
 export default function Home() {
   const categories = getAllCategories();
   const allArticles = getArticles();
 
-  return (
-    <div>
-      {/* Hero */}
-      <div className="mb-10">
-        <h1 className="text-4xl font-bold text-gray-900 mb-3">
-          Learnpedia
-        </h1>
-        <p className="text-lg text-gray-600 max-w-2xl">
-          Your personal knowledge base for creating great AI-generated videos.
-          {" "}
-          <span className="text-gray-500">
-            {allArticles.length} articles across {categories.length} categories.
-          </span>
-        </p>
-      </div>
+  const startHere = [
+    {
+      slug: "prompt-engineering-fundamentals",
+      label: "Prompt Engineering Fundamentals",
+      desc: "Core principles for writing effective AI video prompts",
+    },
+    {
+      slug: "camera-angles",
+      label: "Camera Angles",
+      desc: "Visual storytelling through camera positioning",
+    },
+    {
+      slug: "lighting-techniques",
+      label: "Lighting Techniques",
+      desc: "The #1 factor for professional video quality",
+    },
+    {
+      slug: "character-consistency-fundamentals",
+      label: "Character Consistency",
+      desc: "Maintaining coherent characters across clips",
+    },
+  ];
 
-      {/* Quick Start */}
-      <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 rounded-xl p-6 mb-10">
-        <h2 className="text-lg font-bold text-gray-900 mb-3">Start Here</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {[
-            {
-              slug: "prompt-engineering-fundamentals",
-              label: "Prompt Engineering",
-              desc: "The foundation of all AI video",
-            },
-            {
-              slug: "camera-angles",
-              label: "Camera Angles",
-              desc: "Visual storytelling through angle",
-            },
-            {
-              slug: "lighting-techniques",
-              label: "Lighting Techniques",
-              desc: "The #1 factor for video quality",
-            },
-            {
-              slug: "character-consistency-fundamentals",
-              label: "Character Consistency",
-              desc: "The hardest problem in AI video",
-            },
-          ].map((item) => (
-            <Link
-              key={item.slug}
-              href={`/wiki/${item.slug}`}
-              className="flex flex-col p-4 bg-white rounded-lg border border-blue-100 hover:border-blue-300 hover:shadow-sm transition-all"
-            >
-              <span className="font-semibold text-gray-900">{item.label}</span>
-              <span className="text-sm text-gray-500 mt-1">{item.desc}</span>
-            </Link>
-          ))}
+  return (
+    <div style={{ fontFamily: "'Linux Libertine', Georgia, Times, serif" }}>
+      {/* Title */}
+      <h1 className="text-[28px] font-normal text-[#202122] border-b border-[#a2a9b1] pb-1 mb-1">
+        Main Page
+      </h1>
+      <p className="text-[#54595d] text-[13px] mb-6" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
+        From Learnpedia, the AI video production encyclopedia
+        {" "}&mdash;{" "}
+        {allArticles.length} articles in {categories.length} categories
+      </p>
+
+      {/* Welcome box */}
+      <div className="border border-[#a2a9b1] bg-[#f8eaba] mb-6">
+        <div className="bg-[#cef2e0] border-b border-[#a2a9b1] px-4 py-2">
+          <h2 className="text-[18px] font-normal text-[#202122] m-0">
+            Welcome to Learnpedia
+          </h2>
+        </div>
+        <div className="px-4 py-3 text-[14px] bg-[#f9f9f9]">
+          <p className="text-[#202122] m-0">
+            Your comprehensive knowledge base for AI video production. Learn prompt engineering,
+            camera composition, lighting, character consistency, and professional workflows for
+            creating high-quality AI-generated videos.
+          </p>
         </div>
       </div>
 
-      {/* All Categories */}
-      <div className="space-y-8">
+      {/* Start Here - featured articles */}
+      <div className="border border-[#a2a9b1] mb-6">
+        <div className="bg-[#dfeeff] border-b border-[#a2a9b1] px-4 py-2">
+          <h2 className="text-[16px] font-bold text-[#202122] m-0" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
+            Start here
+          </h2>
+        </div>
+        <div className="px-4 py-3 bg-[#f9f9f9]">
+          <ul className="list-disc pl-5 space-y-1 text-[14px]">
+            {startHere.map((item) => (
+              <li key={item.slug}>
+                <Link href={`/wiki/${item.slug}`} className="text-[#3366cc] hover:underline">
+                  {item.label}
+                </Link>
+                <span className="text-[#54595d]"> &ndash; {item.desc}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* Categories grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {categories.map((cat) => {
           const catArticles = getArticlesByCategory(cat);
           return (
-            <section key={cat}>
-              <h2 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-                <span
-                  className={`inline-block px-2.5 py-0.5 text-xs font-semibold rounded-full ${CATEGORY_COLORS[cat]}`}
-                >
+            <div key={cat} className="border border-[#a2a9b1]">
+              <div className="bg-[#dfeeff] border-b border-[#a2a9b1] px-3 py-1.5">
+                <h2 className="text-[14px] font-bold text-[#202122] m-0" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
                   {cat}
-                </span>
-                <span className="text-sm font-normal text-gray-400">
-                  {catArticles.length} article{catArticles.length !== 1 ? "s" : ""}
-                </span>
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {catArticles.map((article) => (
-                  <Link
-                    key={article.slug}
-                    href={`/wiki/${article.slug}`}
-                    className="group block p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:shadow-sm transition-all"
-                  >
-                    <h3 className="font-semibold text-gray-900 group-hover:text-blue-700 transition-colors">
-                      {article.title}
-                    </h3>
-                    <p className="text-sm text-gray-500 mt-1 line-clamp-2">
-                      {article.summary}
-                    </p>
-                  </Link>
-                ))}
+                  <span className="font-normal text-[#54595d] ml-1.5">
+                    ({catArticles.length})
+                  </span>
+                </h2>
               </div>
-            </section>
+              <div className="px-3 py-2 bg-[#f9f9f9]">
+                <ul className="list-disc pl-4 space-y-0.5 text-[13px]">
+                  {catArticles.map((article) => (
+                    <li key={article.slug}>
+                      <Link
+                        href={`/wiki/${article.slug}`}
+                        className="text-[#3366cc] hover:underline"
+                      >
+                        {article.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           );
         })}
       </div>

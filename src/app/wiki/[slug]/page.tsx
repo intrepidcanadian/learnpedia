@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getArticle, getArticles } from "@/lib/articles";
-import { CATEGORY_COLORS } from "@/lib/types";
 import type { Article } from "@/lib/types";
+import CopyCodeButton from "@/components/CopyCodeButton";
 
 export function generateStaticParams() {
   return getArticles().map((a) => ({ slug: a.slug }));
@@ -38,65 +38,76 @@ export default async function WikiArticle({
 
   return (
     <article>
-      {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
-        <Link href="/" className="hover:text-blue-600 transition-colors">
-          Home
-        </Link>
-        <span>/</span>
-        <span
-          className={`inline-block px-2 py-0.5 text-xs font-semibold rounded-full ${CATEGORY_COLORS[article.category]}`}
-        >
-          {article.category}
-        </span>
-      </div>
-
       {/* Title */}
-      <h1 className="text-3xl font-bold text-gray-900 mb-2">{article.title}</h1>
-      <p className="text-gray-600 mb-8 text-lg leading-relaxed">{article.summary}</p>
+      <h1
+        className="text-[28px] font-normal text-[#202122] border-b border-[#a2a9b1] pb-1 mb-1"
+        style={{ fontFamily: "'Linux Libertine', Georgia, Times, serif" }}
+      >
+        {article.title}
+      </h1>
+      <p
+        className="text-[13px] text-[#54595d] mb-4"
+        style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
+      >
+        From Learnpedia, the AI video production encyclopedia
+      </p>
+
+      {/* Summary box */}
+      <div className="text-[14px] text-[#202122] mb-4 leading-relaxed" style={{ fontFamily: "'Linux Libertine', Georgia, Times, serif" }}>
+        {article.summary}
+      </div>
 
       {/* Content */}
       <div
         className="wiki-content"
         dangerouslySetInnerHTML={{ __html: article.content }}
       />
+      <CopyCodeButton />
 
-      {/* Edit on GitHub link */}
-      <div className="mt-8 pt-4 border-t border-gray-100">
-        <a
-          href={`https://github.com/intrepidcanadian/learnpedia/edit/main/content/${getCategoryFolder(article.category)}/${article.slug}.md`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm text-gray-400 hover:text-blue-600 transition-colors"
-        >
-          Edit this page on GitHub &rarr;
-        </a>
+      {/* Categories & metadata footer */}
+      <div className="mt-8 pt-3 border-t border-[#a2a9b1]" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
+        <div className="flex flex-wrap items-center gap-2 text-[12px] text-[#54595d]">
+          <span className="font-bold">Category:</span>
+          <Link
+            href="/"
+            className="text-[#3366cc] hover:underline"
+          >
+            {article.category}
+          </Link>
+          <span className="mx-1">|</span>
+          <a
+            href={`https://github.com/intrepidcanadian/learnpedia/edit/main/content/${getCategoryFolder(article.category)}/${article.slug}.md`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#3366cc] hover:underline"
+          >
+            Edit this page
+          </a>
+        </div>
       </div>
 
       {/* Related Articles */}
       {relatedArticles.length > 0 && (
-        <div className="mt-8 pt-8 border-t border-gray-200">
-          <h2 className="text-lg font-bold text-gray-900 mb-4">Related Articles</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {relatedArticles.map((related) => (
-              <Link
-                key={related.slug}
-                href={`/wiki/${related.slug}`}
-                className="group block p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:shadow-sm transition-all"
-              >
-                <span
-                  className={`inline-block px-2 py-0.5 text-xs font-semibold rounded-full mb-2 ${CATEGORY_COLORS[related.category]}`}
-                >
-                  {related.category}
-                </span>
-                <h3 className="font-semibold text-gray-900 group-hover:text-blue-700 transition-colors">
-                  {related.title}
-                </h3>
-                <p className="text-sm text-gray-500 mt-1 line-clamp-2">
-                  {related.summary}
-                </p>
-              </Link>
-            ))}
+        <div className="mt-6 border border-[#a2a9b1]">
+          <div className="bg-[#dfeeff] border-b border-[#a2a9b1] px-3 py-1.5">
+            <h2 className="text-[14px] font-bold text-[#202122] m-0" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
+              Related articles
+            </h2>
+          </div>
+          <div className="px-3 py-2 bg-[#f9f9f9]">
+            <ul className="list-disc pl-4 space-y-0.5 text-[13px]" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
+              {relatedArticles.map((related) => (
+                <li key={related.slug}>
+                  <Link
+                    href={`/wiki/${related.slug}`}
+                    className="text-[#3366cc] hover:underline"
+                  >
+                    {related.title}
+                  </Link>
+                  <span className="text-[#54595d]"> ({related.category})</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       )}

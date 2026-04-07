@@ -64,35 +64,42 @@ export default function SearchBar({ articles }: { articles: ArticleMeta[] }) {
   }
 
   return (
-    <div ref={ref} className="relative w-full max-w-md">
-      <input
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        onKeyDown={handleKeyDown}
-        onFocus={() => query.length >= 2 && setOpen(true)}
-        placeholder="Search articles..."
-        className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-      />
+    <div ref={ref} className="relative w-full max-w-[280px]" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
+      <div className="flex">
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={handleKeyDown}
+          onFocus={() => query.length >= 2 && setOpen(true)}
+          placeholder="Search Learnpedia"
+          className="w-full px-2.5 py-1.5 border border-[#a2a9b1] text-[13px] bg-white focus:outline-none focus:border-[#3366cc] text-[#202122]"
+        />
+        <button className="px-3 py-1.5 bg-[#f8f9fa] border border-l-0 border-[#a2a9b1] text-[13px] text-[#202122] hover:bg-[#eaecf0] transition-colors">
+          <svg className="w-4 h-4 text-[#54595d]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </button>
+      </div>
       {open && results.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50 overflow-hidden">
+        <div className="absolute top-full left-0 right-0 mt-0 bg-white border border-[#a2a9b1] shadow-md z-50">
           {results.map((article, i) => (
             <button
               key={article.slug}
               onClick={() => navigate(article.slug)}
-              className={`w-full text-left px-4 py-2.5 border-b border-gray-100 last:border-0 transition-colors ${
-                i === selectedIdx ? "bg-blue-50" : "hover:bg-gray-50"
+              className={`w-full text-left px-3 py-2 border-b border-[#eaecf0] last:border-0 transition-colors ${
+                i === selectedIdx ? "bg-[#eaf3ff]" : "hover:bg-[#f8f9fa]"
               }`}
             >
-              <div className="font-medium text-sm text-gray-900">{article.title}</div>
-              <div className="text-xs text-gray-500 mt-0.5">{article.category}</div>
+              <div className="font-normal text-[13px] text-[#3366cc]">{article.title}</div>
+              <div className="text-[11px] text-[#72777d] mt-0.5">{article.category}</div>
             </button>
           ))}
         </div>
       )}
       {open && query.length >= 2 && results.length === 0 && (
-        <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50 p-4 text-sm text-gray-500 text-center">
-          No articles found for &ldquo;{query}&rdquo;
+        <div className="absolute top-full left-0 right-0 mt-0 bg-white border border-[#a2a9b1] shadow-md z-50 p-3 text-[13px] text-[#54595d] text-center">
+          No results for &ldquo;{query}&rdquo;
         </div>
       )}
     </div>

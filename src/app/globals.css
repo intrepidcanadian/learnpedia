@@ -1,51 +1,72 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --wiki-blue: #3366cc;
+  --wiki-blue-hover: #2a4b8d;
+  --wiki-bg: #f8f9fa;
+  --wiki-border: #a2a9b1;
+  --wiki-border-light: #c8ccd1;
+  --wiki-text: #202122;
+  --wiki-text-light: #54595d;
+  --wiki-header-border: #a2a9b1;
+  --wiki-content-bg: #ffffff;
+  --wiki-sidebar-bg: #f8f9fa;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--wiki-content-bg);
+  --color-foreground: var(--wiki-text);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--wiki-bg);
+  color: var(--wiki-text);
+  font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 /* Wiki article styles */
 .wiki-content h2 {
+  font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
   font-size: 1.5rem;
-  font-weight: 700;
-  margin-top: 2rem;
-  margin-bottom: 0.75rem;
-  padding-bottom: 0.375rem;
-  border-bottom: 1px solid #e5e7eb;
-  color: #111827;
+  font-weight: 400;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--wiki-border);
+  color: var(--wiki-text);
 }
 
 .wiki-content h3 {
-  font-size: 1.125rem;
-  font-weight: 600;
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: #1f2937;
+  font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 1.25rem;
+  margin-bottom: 0.375rem;
+  color: var(--wiki-text);
+}
+
+.wiki-content h4 {
+  font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+  color: var(--wiki-text);
 }
 
 .wiki-content p {
-  margin-bottom: 1rem;
-  line-height: 1.75;
-  color: #374151;
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+  color: var(--wiki-text);
 }
 
 .wiki-content ul, .wiki-content ol {
-  margin-bottom: 1rem;
-  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  padding-left: 1.6rem;
 }
 
 .wiki-content ul {
@@ -57,87 +78,148 @@ body {
 }
 
 .wiki-content li {
-  margin-bottom: 0.375rem;
-  line-height: 1.75;
-  color: #374151;
+  margin-bottom: 0.25rem;
+  line-height: 1.6;
+  color: var(--wiki-text);
 }
 
 .wiki-content a {
-  color: #2563eb;
-  text-decoration: underline;
-  text-decoration-color: #93c5fd;
-  text-underline-offset: 2px;
-  transition: all 0.15s;
+  color: var(--wiki-blue);
+  text-decoration: none;
 }
 
 .wiki-content a:hover {
-  color: #1d4ed8;
-  text-decoration-color: #2563eb;
+  text-decoration: underline;
 }
 
+/* Code blocks */
 .wiki-content pre {
-  background: #f9fafb;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
+  background: #f8f9fa;
+  border: 1px solid var(--wiki-border-light);
   padding: 1rem;
+  padding-top: 2.25rem;
   overflow-x: auto;
   margin-bottom: 1rem;
-  font-size: 0.875rem;
-}
-
-.wiki-content code {
-  background: #f3f4f6;
-  padding: 0.125rem 0.375rem;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
-  color: #dc2626;
-  font-family: ui-monospace, monospace;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  position: relative;
 }
 
 .wiki-content pre code {
   background: none;
   padding: 0;
-  color: #374151;
+  color: var(--wiki-text);
+  font-family: ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
+  font-size: 0.8125rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
+/* Inline code */
+.wiki-content code {
+  background: #f8f9fa;
+  padding: 1px 4px;
+  font-size: 0.875rem;
+  color: var(--wiki-text);
+  font-family: ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
+  border: 1px solid #eaecf0;
+}
+
+/* Copy button */
+.copy-btn {
+  position: absolute;
+  top: 0.375rem;
+  right: 0.375rem;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--wiki-text-light);
+  background: #eaecf0;
+  border: 1px solid var(--wiki-border-light);
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: sans-serif;
+}
+
+.copy-btn:hover {
+  background: #c8ccd1;
+  color: var(--wiki-text);
+}
+
+.copy-btn.copied {
+  color: #14866d;
+  border-color: #14866d;
+  background: #d5fdf4;
+}
+
+/* Tables */
 .wiki-content table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 1rem;
   font-size: 0.875rem;
+  border: 1px solid var(--wiki-border-light);
 }
 
 .wiki-content th {
   text-align: left;
-  padding: 0.625rem 0.75rem;
-  background: #f9fafb;
-  border-bottom: 2px solid #e5e7eb;
-  font-weight: 600;
-  color: #374151;
+  padding: 0.5rem 0.75rem;
+  background: #eaecf0;
+  border: 1px solid var(--wiki-border-light);
+  font-weight: 700;
+  color: var(--wiki-text);
+  font-size: 0.875rem;
 }
 
 .wiki-content td {
-  padding: 0.625rem 0.75rem;
-  border-bottom: 1px solid #f3f4f6;
-  color: #4b5563;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--wiki-border-light);
+  color: var(--wiki-text);
 }
 
 .wiki-content tr:hover td {
-  background: #f9fafb;
+  background: #f8f9fa;
 }
 
 .wiki-content strong {
-  color: #111827;
+  color: var(--wiki-text);
+  font-weight: 700;
 }
 
 .wiki-content em {
-  color: #4b5563;
+  color: var(--wiki-text);
 }
 
+/* Blockquotes */
 .wiki-content blockquote {
-  border-left: 4px solid #3b82f6;
-  padding-left: 1rem;
+  border-left: 3px solid var(--wiki-border);
+  padding: 0.5rem 1rem;
   margin-bottom: 1rem;
-  color: #6b7280;
+  background: #f8f9fa;
+  color: var(--wiki-text-light);
   font-style: italic;
+}
+
+.wiki-content blockquote p {
+  color: var(--wiki-text-light);
+  margin-bottom: 0.375rem;
+}
+
+.wiki-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Horizontal rules */
+.wiki-content hr {
+  border: none;
+  border-top: 1px solid var(--wiki-border-light);
+  margin: 1.5rem 0;
+}
+
+/* Images */
+.wiki-content img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--wiki-border-light);
+  margin: 0.75rem 0;
 }

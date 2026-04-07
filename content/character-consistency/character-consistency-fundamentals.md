@@ -37,11 +37,22 @@ Clothing is one of the strongest consistency anchors. Keep outfits distinctive a
 
 ### 4. Seed Locking (Where Available)
 
-Some platforms let you fix the random seed. Same seed + similar prompt = more consistent results.
+Some platforms let you fix the random seed. Same seed + similar prompt = more consistent results. Seed locking works by fixing the initial noise pattern, which propagates through the entire diffusion trajectory — influencing not just noise but the overall generation path. When combined with detailed character descriptions and reference images, seed locking significantly improves consistency. Use identical seeds + similar prompts for consistency across related scenes, but don't rely on it alone for substantially different poses or angles.
+
+**Caveat — seed consistency degrades when you change:**
+- **Resolution or aspect ratio** — A different canvas size means a different noise grid. The same seed at 1080p vs. 4K will produce noticeably different results, especially for facial features and fine details.
+- **Platform or model version** — Seeds are not portable across platforms (a Runway seed means nothing on Kling). Even model version updates on the same platform can break seed consistency.
+- **Prompt length or structure** — Significant prompt changes alter how the seed-derived noise interacts with the diffusion process. Minor wording tweaks are usually safe; restructuring the prompt is not.
+
+If your project requires multiple resolutions (e.g., 16:9 hero shots and 9:16 social cuts), generate each resolution separately and use reference images or face-lock tools for consistency rather than relying on seed matching.
 
 ### 5. Face-Specific Tools
 
 Dedicated face-swap and face-lock tools can enforce consistency in post. See [Face Consistency Methods](/wiki/face-consistency-methods).
+
+### 6. LoRA Fine-Tuning (Advanced)
+
+For maximum consistency with a specific face or style, train a custom LoRA on 50–100 images of the character (more images = better generalization across poses and lighting). The model learns the appearance natively, producing reliable results without needing reference images in every prompt. See [Face Consistency Methods](/wiki/face-consistency-methods) for implementation details.
 
 ## The Multi-Shot Workflow
 

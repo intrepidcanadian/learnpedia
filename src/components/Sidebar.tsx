@@ -1,9 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ArticleMeta, Category } from "@/lib/types";
-import { CATEGORY_COLORS } from "@/lib/types";
 
 interface SidebarProps {
   categories: Category[];
@@ -19,58 +19,69 @@ export default function Sidebar({
   onNavigate,
 }: SidebarProps) {
   const pathname = usePathname();
+  const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
+
+  const toggle = (cat: string) =>
+    setCollapsed((prev) => ({ ...prev, [cat]: !prev[cat] }));
 
   return (
-    <nav className="p-4 space-y-4 text-sm">
-      <Link
-        href="/"
-        onClick={onNavigate}
-        className="flex items-center gap-2 text-lg font-bold text-gray-900 hover:text-blue-700 transition-colors"
-      >
-        <span className="text-2xl">&#x1F4D6;</span> Learnpedia
-      </Link>
-
-      <div className="pt-2">
+    <nav className="text-[13px] py-3" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
+      {/* Main navigation */}
+      <div className="border-b border-[#c8ccd1] pb-2 mb-2 px-3">
         <Link
           href="/"
           onClick={onNavigate}
-          className={`block px-2 py-1.5 rounded font-medium transition-colors ${
+          className={`block py-1 transition-colors ${
             pathname === "/"
-              ? "bg-blue-50 text-blue-700"
-              : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+              ? "font-bold text-[#202122]"
+              : "text-[#3366cc] hover:underline"
           }`}
         >
-          Home
+          Main page
         </Link>
       </div>
 
+      {/* Categories */}
       {categories.map((cat) => (
-        <div key={cat}>
-          <h3 className="px-2 font-semibold text-gray-500 uppercase text-xs tracking-wider mb-1">
-            {cat}
-          </h3>
-          <ul className="space-y-0.5">
-            {(articlesByCategory[cat] ?? []).map((article) => (
-              <li key={article.slug}>
-                <Link
-                  href={`/wiki/${article.slug}`}
-                  onClick={onNavigate}
-                  className={`block px-2 py-1.5 rounded transition-colors truncate ${
-                    pathname === `/wiki/${article.slug}`
-                      ? "bg-blue-50 text-blue-700 font-medium"
-                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                  }`}
-                  title={article.title}
-                >
-                  {article.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <div key={cat} className="border-b border-[#eaecf0]">
+          <button
+            onClick={() => toggle(cat)}
+            className="w-full flex items-center justify-between px-3 py-1.5 text-left font-bold text-[#54595d] text-[12px] uppercase tracking-wide hover:bg-[#eaecf0] transition-colors"
+          >
+            <span>{cat}</span>
+            <svg
+              className={`w-3 h-3 text-[#72777d] transition-transform ${collapsed[cat] ? "" : "rotate-180"}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          {!collapsed[cat] && (
+            <ul className="pb-1">
+              {(articlesByCategory[cat] ?? []).map((article) => (
+                <li key={article.slug}>
+                  <Link
+                    href={`/wiki/${article.slug}`}
+                    onClick={onNavigate}
+                    className={`block px-3 py-[3px] transition-colors truncate ${
+                      pathname === `/wiki/${article.slug}`
+                        ? "font-bold text-[#202122] bg-white"
+                        : "text-[#3366cc] hover:underline hover:bg-[#eaecf0]"
+                    }`}
+                    title={article.title}
+                  >
+                    {article.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       ))}
 
-      <div className="pt-4 border-t border-gray-200 text-xs text-gray-400">
+      <div className="px-3 pt-3 text-[11px] text-[#72777d]">
         {totalArticles} articles
       </div>
     </nav>
