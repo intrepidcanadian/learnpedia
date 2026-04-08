@@ -11,6 +11,8 @@ related:
 
 The AI video landscape moves fast. Here's the current state of major platforms and their strengths.
 
+> **Tool Landscape Note (April 2026):** AI video tools ship major updates on a weeks-to-months cadence. This comparison reflects the state of each platform as of early 2026. Before starting a project, check your target platform's latest release notes — capabilities, pricing, and content policies may have changed since this was written. Version numbers are included where applicable.
+
 ## Platform Comparison
 
 | Platform | Strength | Weakness | Best For |

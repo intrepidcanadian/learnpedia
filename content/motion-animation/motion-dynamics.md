@@ -68,7 +68,7 @@ Prompt: `"She pushes through the heavy door, wind catching her hair, the door sw
 
 ## Common Motion Pitfalls
 
-- **Too many simultaneous actions** — One primary action per clip. Secondary motion is fine; competing primary actions are not.
+- **Too many simultaneous actions** — One primary action per clip. Secondary motion (physics consequences, environmental reactions) is fine and encouraged; competing primary actions (two characters each performing deliberate, independent actions) are not. Rule of thumb: one primary directed action + unlimited secondary/consequential motion per clip. See [Seedance 2.0](/wiki/seedance-2) for the "one shot, one verb" principle.
 - **Missing environmental motion** — Even "still" scenes need ambient motion: clouds drifting, leaves rustling, light flickering. Total stillness reads as frozen, not calm.
 - **Speed mismatches** — A character running in slow motion while background elements move at normal speed breaks immersion. Specify speed globally.
 - **Relying on interpolation for slow-mo** — Frame interpolation (converting 24fps to 60fps) can introduce ghosting and warping, especially on hair, fabric, and faces. When possible, generate natively at 60fps for slow-motion rather than interpolating in post. See [Frame Rate Guide](/wiki/frame-rate-guide) for details.

@@ -73,11 +73,20 @@ See [Lighting Techniques](/wiki/lighting-techniques) and [Mood Lighting](/wiki/m
 
 ### What T2V Struggles With
 
-- **Character consistency across clips** — Each generation creates a new interpretation of the subject. For multi-shot projects, use [character reference methods](/wiki/character-consistency-fundamentals)
+- **Character consistency across clips** — This is the #1 reason practitioners switch from T2V to I2V. Each T2V generation creates a new interpretation of the subject — face, hair, body proportions all shift between clips. For multi-shot projects, use [character reference methods](/wiki/character-consistency-fundamentals) or switch to I2V with a locked reference image.
 - **Precise hand and finger detail** — Improving rapidly but still the most common artifact
 - **Text and logos** — AI-generated text in video is unreliable; add in post-production
-- **Complex multi-character interactions** — Two or more characters interacting often produces artifacts
+- **Complex multi-character interactions** — Two or more characters interacting often produces artifacts. Even Seedance 2.0 recommends limiting to 1–2 characters per generation.
 - **Exact spatial positioning** — "Character stands 3 feet to the left of the table" is hard to control precisely
+
+### Sora-Specific Tips
+
+Sora handles several things differently from other T2V platforms:
+
+- **Longer prompts work better** — Sora processes longer prompts (150–300 words) more faithfully than most models. Where other platforms lose detail past 75 words, Sora maintains adherence. Use this for complex multi-element scenes.
+- **Scene understanding is strongest** — Sora excels at abstract or physics-heavy scenarios. Describe the physics you want and Sora often renders cause-and-effect correctly (a ball bouncing, water flowing around obstacles).
+- **No direct seed access** — Sora doesn't currently expose seed control. For iteration, rely on prompt variation and regeneration rather than seed-locking.
+- **Character consistency is weak in T2V** — Sora's photorealism makes character drift more noticeable. For character-driven content, prefer Kling or Seedance 2.0's reference systems.
 
 ## T2V vs. I2V vs. V2V
 

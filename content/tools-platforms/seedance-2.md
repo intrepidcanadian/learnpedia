@@ -121,6 +121,8 @@ Describe force, weight, and friction rather than just naming actions. "Tires smo
 > "More than two characters causes identity confusion and consistency loss."
 > — [Redreamality Prompt Engineering Playbook](https://redreamality.com/blog/seedance-2-guide/)
 
+**Reliability by count:** 1 character is most reliable; 2 characters is medium reliability; 3+ is not recommended. For multi-character sequences, generate separate single- or double-character clips and assemble in post. The @ reference system works within this 1–2 limit — it locks faces and clothing within a clip, not across unlimited characters.
+
 ### 9. Multi-Shot via Lens Switch
 
 For multi-shot sequences within a single generation, use time-bracketed beats rather than stacking actions. Each beat gets its own primary action and camera instruction.
@@ -163,6 +165,10 @@ When @ references don't produce the expected result:
 | Style reference not applied | Style asset uploaded as character reference | Use `@style` tag specifically for style references, not `@character` |
 | Face drift despite @ reference | Multiple characters competing for model attention | Reduce to 1 character per clip, or use separate generations and composite |
 | Reference image "leaks" into scene | Reference background or props appearing in output | Use a reference image with a plain white/gray background and no props |
+
+## 60fps and Motion Blur
+
+Seedance 2.0's native 60fps output naturally produces less motion blur per frame than 24fps generation — this is correct behavior, not an artifact. Each frame captures a shorter slice of time, so motion appears sharper. If you want a cinematic motion blur look, either specify `"cinematic motion blur"` in your prompt or apply motion blur in post. See [Motion Blur & Shutter Angle](/wiki/motion-blur-shutter-angle) for how frame rate interacts with blur.
 
 ## Limitations
 

@@ -61,7 +61,7 @@ Treat prompting like sculpture: start with a rough block, then refine. Generate 
 
 ## Subject Count and Clarity
 
-Always be explicit about how many subjects are in the scene. Models handle single subjects best, two subjects reasonably, and three or more with increasing inconsistency — though this varies by platform (Seedance 2.0 handles 3+ subjects more reliably than older models).
+Always be explicit about how many subjects are in the scene. Models handle single subjects best, two subjects reasonably, and three or more with increasing inconsistency. Even newer platforms like Seedance 2.0 recommend limiting to 1–2 characters per generation — more than two causes identity confusion and consistency loss.
 
 - **One subject:** Most reliable. Full model attention on a single character.
 - **Two subjects:** Specify each clearly and their spatial relationship: `"a man on the left, a woman on the right, facing each other across a table"`.
