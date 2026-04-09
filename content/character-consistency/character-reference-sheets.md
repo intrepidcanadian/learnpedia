@@ -50,13 +50,48 @@ Each distinct outfit shown clearly. Include fabric texture details and color swa
 4. Use these sheets as image references when generating video clips
 5. Keep the same text description alongside the visual reference — visual + text together produces the strongest consistency
 
-## Platform-Specific Notes
+## Platform-Specific Workflows
 
-Different video platforms handle character references differently:
+Each platform handles character references differently. Choose your workflow based on the platform you're generating on:
 
-- **Seedance 2.0:** Use the `@character` reference system to bind a reference image to a name in your prompt. See [Seedance 2.0](/wiki/seedance-2) for details.
-- **Runway:** Upload reference images as "image input" alongside your text prompt.
-- **Kling:** Supports face reference upload for character locking.
+### Seedance 2.0 — `@` Reference System
+
+Seedance uses named references bound to uploaded images. This is the most structured approach:
+
+1. Upload your character reference sheet as an image asset
+2. Assign it a name using `@character_name` syntax in your prompt
+3. Reference that name throughout your prompt: `"@hero_character walks toward camera"`
+4. For multi-character scenes, bind each character separately: `@character_a`, `@character_b`
+
+**Strengths:** Explicit binding between name and image; reusable across clips; supports up to 2 characters per generation reliably. **Limitations:** 3+ characters drops to ~60% success; the reference image must be a clear, well-lit single-subject shot.
+
+See [Seedance 2.0](/wiki/seedance-2) for full `@` reference syntax.
+
+### Runway Gen-4 — Image Input + Character Lock
+
+1. Upload your reference sheet as an "image input" alongside your text prompt
+2. Enable Character Lock (if available in your plan) to anchor facial features across generations
+3. Describe the character in text to reinforce the visual reference
+4. For multi-shot consistency, use the same reference image and identical text description for every clip
+
+**Strengths:** Strong style adherence; character lock reduces facial drift. **Limitations:** Character lock availability varies by plan tier; works best with front-facing, well-lit references.
+
+### Kling 2.0 — Face Reference Upload
+
+1. Upload a clear, front-facing headshot as a face reference (separate from the main image input)
+2. The model locks onto facial geometry and skin tone from the reference
+3. Pair with a text description of clothing and body type — Kling's face lock handles the face; you handle everything else in text
+
+**Strengths:** Best-in-class face consistency for single characters; works well across different poses and lighting. **Limitations:** Face lock is strongest for realistic human faces; stylized or non-human characters may not lock as reliably. One face reference per generation.
+
+### Choosing a Platform for Character Work
+
+| Need | Best Platform |
+|---|---|
+| Multi-clip project with 1-2 recurring characters | Seedance 2.0 (@ refs) or Kling (face lock) |
+| Strongest facial consistency | Kling 2.0 |
+| Style + character together | Runway Gen-4 |
+| Non-human or stylized characters | Runway (image input) or Seedance (@ refs) |
 
 Always check your platform's current documentation — reference features are actively evolving.
 

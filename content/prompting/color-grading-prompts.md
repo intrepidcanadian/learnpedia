@@ -11,6 +11,15 @@ related:
 
 Color grading is mood. The same scene shot in warm amber vs. cold steel blue tells a completely different story. Most current AI video models respond well to color language, though consistency varies by platform — test your grade on a few clips before committing to an entire project.
 
+## Film Stock vs. Color Grading — When Each Applies
+
+These two concepts overlap but serve different purposes:
+
+- **Film stock** (generation-time) — Describes the camera/emulsion response that shaped how the image was captured. Include film stock names in your prompt to set the foundational look: grain structure, color response, dynamic range. Example: `"shot on Kodak Vision3 500T"`. See [Style Transfer Prompts](/wiki/style-transfer-prompts) for stock selection.
+- **Color grading** (post-production) — Describes the treatment applied after capture: pushing shadows toward teal, lifting blacks, crushing highlights. This is what you do in DaVinci Resolve or Premiere after generation.
+
+In practice: use a film stock reference in your prompt to anchor the base aesthetic, then apply color grading in your NLE to fine-tune. Trying to do both in the prompt (`"Kodak Vision3 500T with teal-orange grade"`) can work but gives you less control than separating the two stages. When a prompt-level grade drifts between clips, post-production grading is the fix — see [Post-Production Workflow](/wiki/post-production-workflow) for color matching techniques.
+
 ## Color Temperature
 
 - **Warm:** golden, amber, honey-toned, sunset warmth, tungsten
